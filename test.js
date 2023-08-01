@@ -3,14 +3,18 @@
  * 1. utm source
  */
 
-
-async function apisBookmarklet(params) 
+async function apisBookmarklet(params, mode) 
 {
     if (!params) {
         params = await showBookmarkletModal();
     }
 
-    runBookmarklet(params[0]);
+    if(mode == "run")
+    {
+        runBookmarklet(params[0]);
+    }
+
+    return params;
 }
 
 function showBookmarkletModal() 
