@@ -30,8 +30,10 @@ function showBookmarkletModal()
                 <button style="margin-left:10px"; type="button" onclick="(function(){document.getElementById('dialog').remove();})();")>Exit</button>
             </form>`; 
         //dialog.querySelector('button[type="submit"]').addEventListener()
-        dialog.addEventListener("submit", function(){
+        dialog.addEventListener("submit", function(event){
+            event.preventDefault();
             resolve([ dialog.getElementsByClassName("input")[0].value ]);
+            document.getElementById('dialog').remove();
         })
         document.body.appendChild(dialog); 
         dialog.showModal(); 
