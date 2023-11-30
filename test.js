@@ -1,3 +1,10 @@
+const currentScript = document.currentScript;
+const params = currentScript.getAttribute('params');
+const attrNames = currentScript.getAttributeNames();
+//apisLogger.log("AB-Viewer currentScript:", currentScript);
+//apisLogger.log("AB-Viewer 'params':", params);
+//apisLogger.log("AB-Viewer 'attrNames':", attrNames);
+
 /* 
  * Parameters 
  * 1. utm source
