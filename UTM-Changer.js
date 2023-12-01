@@ -44,7 +44,7 @@ async function MyPrompt() {
     }
     else
     {
-        newSettings.newUtmSource = params;
+        newSettings = JSON.parse(params);
     }
 
     function enableLogging() {
