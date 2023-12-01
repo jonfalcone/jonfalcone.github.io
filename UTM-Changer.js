@@ -1,5 +1,5 @@
 //Change UTM Source, enable logging, and clear localStorage
-function MyPrompt() {
+async function MyPrompt() {
     return new Promise((resolve, reject) => {
         let dialog = document.createElement("dialog");
         dialog.setAttribute("id", "dialog");
