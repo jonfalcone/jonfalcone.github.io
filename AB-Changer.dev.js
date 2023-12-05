@@ -39,7 +39,7 @@ function MyPrompt() {
     }
     else
     {
-        newAB = params;
+        newAB = JSON.parse(params);
     }
 
     var setAB = function(values) {
