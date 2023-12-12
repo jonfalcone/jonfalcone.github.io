@@ -31,7 +31,7 @@ function MyPrompt(bookmarkletSetup) {
             resolve(names);
         });
         var exitButton = document.getElementById("exitButton");
-        exitButton.onClick = function() {
+        exitButton.onclick = function() {
             e.preventDefault();
             dialog.remove();
             resolve(-1);
