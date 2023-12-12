@@ -35,7 +35,7 @@ function MyPrompt(bookmarkletSetup) {
             e.preventDefault();
             dialog.remove();
             resolve(-1);
-        });
+        };
     });
 }
 (async function() {
