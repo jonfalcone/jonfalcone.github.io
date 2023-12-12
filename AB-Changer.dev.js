@@ -12,7 +12,7 @@ function MyPrompt(bookmarkletSetup) {
             <input class="text_input" type="text"/>
             <br>
             <button id=saveOrSubmit type="submit">Save</button>
-            <button style="margin-left:10px"; type="button" onclick="(function(){document.getElementById('dialog').remove(); resolve(-1);})();")>Exit</button>
+            <button style="margin-left:10px"; type="button" onclick="(function(){resolve(-1); document.getElementById('dialog').remove();})();")>Exit</button>
           </form>`;
         document.body.appendChild(dialog);
         if(bookmarkletSetup)
