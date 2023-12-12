@@ -1,3 +1,11 @@
+window.onload = function() {
+    var exitButton = document.getElementById("exitButton");
+    exitButton.onclick = function() {
+        e.preventDefault();
+        dialog.remove();
+        resolve(-1);
+    };
+}
 //Set/Modify AB tests that do not exist in the AB portal
 function MyPrompt(bookmarkletSetup) {
     return new Promise((resolve, reject) => {
@@ -30,12 +38,6 @@ function MyPrompt(bookmarkletSetup) {
                 });
             resolve(names);
         });
-        var exitButton = document.getElementById("exitButton");
-        exitButton.onclick = function() {
-            e.preventDefault();
-            dialog.remove();
-            resolve(-1);
-        };
     });
 }
 (async function() {
