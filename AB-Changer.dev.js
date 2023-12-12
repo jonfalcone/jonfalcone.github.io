@@ -11,8 +11,8 @@ function MyPrompt(bookmarkletSetup) {
             <label for="ptext">AB Test Value(s):</label>
             <input class="text_input" type="text"/>
             <br>
-            <button id=saveOrSubmit type="submit">Save</button>
-            <button style="margin-left:10px"; type="button" onclick="(function(){resolve(-1); document.getElementById('dialog').remove();})();")>Exit</button>
+            <button id="saveOrSubmit" type="submit">Save</button>
+            <button id="exitButton" style="margin-left:10px"; type="button">Exit</button>
           </form>`;
         document.body.appendChild(dialog);
         if(bookmarkletSetup)
@@ -29,6 +29,12 @@ function MyPrompt(bookmarkletSetup) {
                     return input.value;
                 });
             resolve(names);
+        });
+        var exitButton = document.getElementById("exitButton");
+        exitButton.addEventListener("click", (evt) => {
+            e.preventDefault();
+            dialog.remove();
+            resolve(-1);
         });
     });
 }
