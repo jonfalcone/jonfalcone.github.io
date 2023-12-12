@@ -44,7 +44,12 @@ function MyPrompt(bookmarkletSetup) {
     const attrNames = currentScript.getAttributeNames();
     var newAB;
 
-    if(!params && !bookmarkletSetup)
+    if(bookmarkletSetup)
+    {
+        return;
+    }
+    
+    if(!params)
     {
         newAB = await MyPrompt();
     }
