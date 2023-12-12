@@ -1,5 +1,5 @@
 //Set/Modify AB tests that do not exist in the AB portal
-function MyPrompt() {
+function MyPrompt(bookmarkletSetup) {
     return new Promise((resolve, reject) => {
         let dialog = document.createElement("dialog");
         dialog.setAttribute("id", "dialog");
@@ -11,10 +11,15 @@ function MyPrompt() {
             <label for="ptext">AB Test Value(s):</label>
             <input class="text_input" type="text"/>
             <br>
-            <button type="submit">Save</button>
+            <button id=saveOrSubmit type="submit">Save</button>
             <button style="margin-left:10px"; type="button" onclick="(function(){document.getElementById('dialog').remove();})();")>Exit</button>
           </form>`;
         document.body.appendChild(dialog);
+        if(bookmarkletSetup)
+        {
+            var saveButton = document.getElementById("saveOrSubmit");
+            saveButton.name = "Save";
+        }
         dialog.showModal();
         dialog.querySelector("form").addEventListener("submit", (e) => {
             e.preventDefault();
@@ -30,16 +35,17 @@ function MyPrompt() {
 (async function() {
     const currentScript = document.currentScript;
     const params = currentScript.getAttribute('params');
+    const bookmarkletSetup = currentScript.getAttribute('bookmarkletSetup');
     const attrNames = currentScript.getAttributeNames();
     var newAB;
 
-    if(!params)
+    if(!params && !bookmarkletSetup)
     {
         newAB = await MyPrompt();
     }
     else
     {
-        newAB = JSON.parse(params);
+        newAB = params;
     }
 
     var setAB = function(values) {
