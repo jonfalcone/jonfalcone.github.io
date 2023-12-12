@@ -32,7 +32,6 @@ function MyPrompt(bookmarkletSetup) {
         });
         var exitButton = document.getElementById("exitButton");
         exitButton.onclick = function() {
-            e.preventDefault();
             dialog.remove();
             resolve(-1);
         };
