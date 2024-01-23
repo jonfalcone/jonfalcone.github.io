@@ -4,41 +4,41 @@ function MyPrompt() {
         let dialog = document.createElement("dialog");
         dialog.setAttribute("id", "cookie_dialog");
         dialog.innerHTML = `
-<form>
-    <label for="newUtmSource">UTM Source:</label>
-    <input class="text_input" type="text" value="" style="border:1px solid black" id="newUtmSource"/>
-    <br>
-    <label for="newGeo">GEO Code (US || DE || JP):</label>
-    <input class="text_input" type="text" value="US" style="border:1px solid black" id="newGeo" required/>
-    <br>
-    <label for="newState">State Code (CA || TX):</label>
-    <input class="text_input" type="text" value="CA" style="border:1px solid black" id="newState"/>
-    <br>
-    <label for="newCity">City:</label>
-    <input class="text_input" type="text" value="SANDIEGO" style="border:1px solid black" id="newCity"/>
-    <br>
-    <label for="shouldSetLiveramp">Set Liveramp </label>
-    <input class="radio_input" type="Checkbox" id="shouldSetLiveramp" />
-    <br>
-    <label for="shouldSetQuantcast">Set Quantcast </label>
-    <input class="radio_input" type="Checkbox" id="shouldSetQuantcast"/>
-    <br>
-    <label for="shouldSetConsentManager">Set ConsentManager </label>
-    <input class="radio_input" type="Checkbox" id="shouldSetConsentManager"/>
-    <br>
-    <label for="shouldEnableLogging">Enable console logging </label>
-    <input class="radio_input" type="Checkbox" id="shouldEnableLogging"/>
-    <br>
-    <label for="shouldClearLocalStorage">Clear localStorage </label>
-    <input class="radio_input" type="Checkbox" id="shouldClearLocalStorage" checked/>
-    <br>
-    <label for="shouldReload">Reload page on submit </label>
-    <input class="radio_input" type="Checkbox" id="shouldReload" checked/>
-    <br>
-    <br>
-    <button type="submit">Submit</button>
-    <button style="margin-left:10px"; type="button" onclick="(function(){document.getElementById('cookie_dialog').remove();})();")>Exit</button>
-</form>`;
+        <form>
+            <label for="newUtmSource">UTM Source:</label>
+            <input class="text_input" type="text" value="" style="border:1px solid black" id="newUtmSource"/>
+            <br>
+            <label for="newGeo">GEO Code (US || DE || JP):</label>
+            <input class="text_input" type="text" value="US" style="border:1px solid black" id="newGeo" required/>
+            <br>
+            <label for="newState">State Code (CA || TX):</label>
+            <input class="text_input" type="text" value="CA" style="border:1px solid black" id="newState"/>
+            <br>
+            <label for="newCity">City:</label>
+            <input class="text_input" type="text" value="SANDIEGO" style="border:1px solid black" id="newCity"/>
+            <br>
+            <label for="shouldSetLiveramp">Set Liveramp </label>
+            <input class="radio_input" type="Checkbox" id="shouldSetLiveramp" />
+            <br>
+            <label for="shouldSetQuantcast">Set Quantcast </label>
+            <input class="radio_input" type="Checkbox" id="shouldSetQuantcast"/>
+            <br>
+            <label for="shouldSetConsentManager">Set ConsentManager </label>
+            <input class="radio_input" type="Checkbox" id="shouldSetConsentManager"/>
+            <br>
+            <label for="shouldEnableLogging">Enable console logging </label>
+            <input class="radio_input" type="Checkbox" id="shouldEnableLogging"/>
+            <br>
+            <label for="shouldClearLocalStorage">Clear localStorage </label>
+            <input class="radio_input" type="Checkbox" id="shouldClearLocalStorage" checked/>
+            <br>
+            <label for="shouldReload">Reload page on submit </label>
+            <input class="radio_input" type="Checkbox" id="shouldReload" checked/>
+            <br>
+            <br>
+            <button type="submit">Submit</button>
+            <button id="exitButton" style="margin-left:10px"; type="button">Exit</button>
+        </form>`;
         document.body.appendChild(dialog);
         dialog.showModal();
         dialog.querySelector("form").addEventListener("submit", (e) => {
@@ -48,14 +48,33 @@ function MyPrompt() {
             [...dialog.querySelectorAll("input")].forEach(input => inputs[input.id] = (input.type == "text" ? input.value : input.checked));
             resolve(inputs);
         });
+        var exitButton = document.getElementById("exitButton");
+        exitButton.onclick = function() {
+            dialog.remove();
+            resolve(-1);
+        };
     });
 }
 (async function() {
+    const currentScript = document.currentScript;
+    const params = currentScript.getAttribute('params');
+    const bookmarkletSetup = currentScript.getAttribute('bookmarkletSetup');
+    const attrNames = currentScript.getAttributeNames();
+
     if (document.getElementById('cookie_dialog')) {
         document.getElementById('cookie_dialog').remove();
         return;
     }
-    var newSettings = await MyPrompt();
+
+    var newSettings;
+    if(!params)
+    {
+        newSettings = await MyPrompt();
+    }
+    else
+    {
+        newSettings = params;
+    }
 
     function qaLog(msg, obj) {
         obj = obj || '';
