@@ -63,7 +63,7 @@ function MyPrompt(bookmarkletSetup) {
 (async function() {
     const currentScript = document.currentScript;
     const params = currentScript.getAttribute('params');
-    const bookmarkletSetup = currentScript.getAttribute('bookmarkletSetup');
+    const bookmarkletSetup = currentScript.getAttribute('bookmarkletSetup') === 'true';
     const attrNames = currentScript.getAttributeNames();
 
     if (document.getElementById('cookie_dialog')) {
