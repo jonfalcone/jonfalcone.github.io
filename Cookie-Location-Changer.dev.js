@@ -71,6 +71,11 @@ function MyPrompt() {
         return;
     }
 
+    if(bookmarkletSetup)
+    {
+        return;
+    }
+
     var newSettings;
     if(!params)
     {
