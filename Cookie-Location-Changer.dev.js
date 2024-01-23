@@ -83,7 +83,7 @@ function MyPrompt(bookmarkletSetup) {
     }
     else
     {
-        newSettings = params;
+        newSettings = JSON.parse(params);
     }
 
     function qaLog(msg, obj) {
