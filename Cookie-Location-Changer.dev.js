@@ -1,5 +1,5 @@
 // Set/Update Location with cookies
-function MyPrompt() {
+function MyPrompt(bookmarkletSetup) {
     return new Promise((resolve, reject) => {
         let dialog = document.createElement("dialog");
         dialog.setAttribute("id", "cookie_dialog");
