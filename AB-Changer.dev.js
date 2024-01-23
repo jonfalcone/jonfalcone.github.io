@@ -40,7 +40,7 @@ function MyPrompt(bookmarkletSetup) {
 (async function() {
     const currentScript = document.currentScript;
     const params = currentScript.getAttribute('params');
-    const bookmarkletSetup = currentScript.getAttribute('bookmarkletSetup');
+    const bookmarkletSetup = currentScript.getAttribute('bookmarkletSetup') === 'true';
     const attrNames = currentScript.getAttributeNames();
     var newAB;
 
@@ -55,7 +55,7 @@ function MyPrompt(bookmarkletSetup) {
     }
     else
     {
-        newAB = params;
+        newAB = JSON.parse(params);
     }
 
     var setAB = function(values) {
