@@ -36,10 +36,15 @@ function MyPrompt() {
             <input class="radio_input" type="Checkbox" id="shouldReload" checked/>
             <br>
             <br>
-            <button type="submit">Submit</button>
+            <button id="saveOrSubmit" type="submit">Submit</button>
             <button id="exitButton" style="margin-left:10px"; type="button">Exit</button>
         </form>`;
         document.body.appendChild(dialog);
+        if(bookmarkletSetup)
+        {
+            var saveButton = document.getElementById("saveOrSubmit");
+            saveButton.name = "Save";
+        }
         dialog.showModal();
         dialog.querySelector("form").addEventListener("submit", (e) => {
             e.preventDefault();
