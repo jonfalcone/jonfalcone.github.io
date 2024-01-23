@@ -1,3 +1,26 @@
 {
-    "test.js": "Let's test this out!"
+    "AB-Changer.dev.js": 1,
+    "AB-Share.js": 0,
+    "AB-Viewer.js": 0,
+    "Ad-Overlay.js": 0,
+    "Advanced-Ad-Overlay.dev.js": 0,
+    "Article-Edit.js": 0,
+    "Bucket-AB-Share.js": 0,
+    "Cookie-Location-Changer.dev.js": 0,
+    "Edit-Active-AB-Tests.js": 0,
+    "Organic-Reset.js": 0,
+    "Paid-Reset-Paginated-Desktop.js": 0,
+    "Paid-Reset-Paginated-Mobile.js": 0,
+    "Paid-Reset-SPL-Desktop.js": 0,
+    "Paid-Reset-SPL-Mobile.js": 0,
+    "Providers-Viewer.js": 0,
+    "Query-String-Editor.js": 0,
+    "Quiz-Jumper.js": 0,
+    "Quiz-Navigator.js": 0,
+    "Site-Navigator.js": 0,
+    "Toggle-Avantis-Logging.js": 0,
+    "Toggle-Refresh.js": 0,
+    "UTM-Changer.js": 1,
+    "Url-Builder.js": 0,
+    "cc_ab-Overlay.dev.js": 0
 }
