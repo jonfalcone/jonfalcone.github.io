@@ -11,14 +11,14 @@ function MyPrompt(bookmarkletSetup) {
             <label for="ptext">AB Test Value(s):</label>
             <input class="text_input" type="text"/>
             <br>
-            <button id="saveOrSubmit" type="submit">Save</button>
+            <button id="saveOrSubmit" type="submit">Submit</button>
             <button id="exitButton" style="margin-left:10px"; type="button">Exit</button>
           </form>`;
         document.body.appendChild(dialog);
         if(bookmarkletSetup)
         {
             var saveButton = document.getElementById("saveOrSubmit");
-            saveButton.name = "Save";
+            saveButton.innerText = "Save";
         }
         dialog.showModal();
         dialog.querySelector("form").addEventListener("submit", (e) => {
