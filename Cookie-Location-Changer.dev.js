@@ -43,7 +43,7 @@ function MyPrompt(bookmarkletSetup) {
         if(bookmarkletSetup)
         {
             var saveButton = document.getElementById("saveOrSubmit");
-            saveButton.name = "Save";
+            saveButton.innerText = "Save";
         }
         dialog.showModal();
         dialog.querySelector("form").addEventListener("submit", (e) => {
